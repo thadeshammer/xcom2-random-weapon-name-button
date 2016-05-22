@@ -26,10 +26,17 @@ event OnInit(UIScreen Screen)
 	local string		strWeaponNickNameTooltip;
 	local string		strNewNickName;
 
-	WeaponModScreen = UIArmory_WeaponUpgrade(Screen);
+	/*
+		Check whether the screen calling us is either of the target
+		type or one of the target type's descendants.
 
-	if (WeaponModScreen == none)
+		This will (hopefully) allow the mod to support Grimy's
+		Loot Mod.
+	*/
+	if ( !(Screen.isA('UIArmory_WeaponUpgrade')) )
 		return;
+
+	WeaponModScreen = UIArmory_WeaponUpgrade(Screen);
 
 	m_strGeneratedNickNotSupported = "Can't generate name for this weapon.";
 
@@ -82,5 +89,5 @@ simulated function GenerateRandomWeaponName(UIButton Button)
 
 defaultproperties
 {
-	ScreenClass = class'UIArmory_WeaponUpgrade';
+	ScreenClass = none;
 }
