@@ -50,14 +50,13 @@ event OnInit(UIScreen Screen)
 		RandomWeaponNicknameButton.SetDisabled(true, strWeaponNicknameTooltip);
 	} else {
 		strRandomWeaponNickNameButtonLabel = class'UIUtilities_Text'.static.GetColoredText("Random Weapon Nickname", eUIState_Normal);
-	}	
-	
+	}
+
 }
 
-
-simulated function UIButton CreateButton(UIScreen Screen, 
+simulated function UIButton CreateButton(UIScreen Screen,
 										 name ButtonName, string ButtonLabel,
-										 delegate<OnClickedDelegate> OnClickCallThis, 
+										 delegate<OnClickedDelegate> OnClickCallThis,
 										 int AnchorPos, int XOffset, int YOffset)
 {
 	local UIButton NewButton;
@@ -67,7 +66,7 @@ simulated function UIButton CreateButton(UIScreen Screen,
 	NewButton.SetAnchor(AnchorPos);
 	NewButton.SetPosition(XOffset, YOffset);
 	NewButton.SetSize(NewButton.Width, BUTTON_HEIGHT);
-	
+
 	return NewButton;
 }
 
@@ -75,8 +74,8 @@ simulated function GenerateRandomWeaponName(UIButton Button)
 {
 	local StateObjectReference			WeaponRef;
 	local XComGameState_Item			Weapon;
-	local string						NewNickName;	
-		
+	local string						NewNickName;
+
 	WeaponRef = WeaponModScreen.WeaponRef;
 
 	Weapon = XComGameState_Item(`XCOMHISTORY.GetGameStateForObjectID(WeaponRef.ObjectID));
